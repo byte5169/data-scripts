@@ -1,5 +1,6 @@
 from sklearn import preprocessing
 import pandas as pd
+import re
 
 
 class RawData:
@@ -232,3 +233,34 @@ class DataConvert(RawData):
 
         # return
         return df_label
+
+
+class DataCleaning:
+    """
+    Class responsible for any type of data cleaning. \n
+    Methods: \n
+    clean_txt() - return a cleaned text string. \n
+
+    :text: regex data cleaning out of hash tags, mentions, urls \n
+    """
+
+    def __init__(self, text):
+        self.text = text
+
+    def clean_txt(self):
+        """
+        :return: cleaned input as a string
+        """
+
+        text = self.text
+        
+        # removing @mentions
+        text = re.sub("@[A-Za-z0–9]+", "", text)  
+        # removing '#' hash tag
+        text = re.sub("#", "", text)  
+        # removing RT
+        text = re.sub("RT[\s]+", "", text)  
+        # removing hyperlink
+        text = re.sub("https?:\/\/\S+", "", text)  
+
+        return text
