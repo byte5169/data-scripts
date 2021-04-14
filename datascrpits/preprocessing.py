@@ -253,14 +253,14 @@ class DataCleaning:
         """
 
         text = self.text
-        
+
         # removing @mentions
-        text = re.sub("@[A-Za-z0–9]+", "", text)  
+        text = re.sub("@[A-Za-z0–9]+", "", text)
         # removing '#' hash tag
-        text = re.sub("#", "", text)  
+        text = re.sub("#", "", text)
         # removing RT
-        text = re.sub("RT[\s]+", "", text)  
+        text = re.sub("RT[\s]+", "", text)
         # removing hyperlink
-        text = re.sub("https?:\/\/\S+", "", text)  
+        text = re.sub("https?:\/\/\S+", "", text)
 
         return text
