@@ -6,10 +6,10 @@ from datascrpits.processing import DataProcessing
 
 
 def main():
-    df = pd.read_csv('./data/covid_19_data.csv')
+    df = pd.read_csv(
+        './data/penguins_size.csv')
 
-    d, t, v = DataProcessing(df).data_split()
-
+    DataVisualize(df).confusion_matrix("species", "island")
 
 
 if __name__ == '__main__':
